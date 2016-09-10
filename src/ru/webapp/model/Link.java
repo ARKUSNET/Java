@@ -4,8 +4,13 @@ package ru.webapp.model;
  * Created by Айслу on 08.09.2016.
  */
 public class Link {
+    public static Link EMPTY = new Link();
     private final String name;
     private final String url;
+
+    public Link() {
+        this("", null);
+    }
 
     public Link(String name, String url) {
         this.name = name;
@@ -13,14 +18,17 @@ public class Link {
     }
 
     public Link(Link link) {
-        this.name = link.name;
-        this.url = link.url;
+        this(link.name, link.url);
     }
 
-    public void out(){
-        for (int i = 0; i < 5; i++){
+    public void out() {
+        for (int i = 0; i < 5; i++) {
             System.out.println(i);
         }
+    }
+
+    public static Link empty() {
+        return EMPTY;
     }
 
     @Override
@@ -30,15 +38,25 @@ public class Link {
 
         Link link = (Link) o;
 
-        if (name != null ? !name.equals(link.name) : link.name != null) return false;
-        return url.equals(link.url);
+        if (!name.equals(link.name)) return false;
+        if (url != null ? !url.equals(link.url) : link.url != null) return false;
 
+        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + url.hashCode();
+        int result = name.hashCode();
+        result = 31 * result + (url != null ? url.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public
+    String toString() {
+        return "Link{" +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                '}';
     }
 }
