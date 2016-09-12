@@ -14,5 +14,5 @@ public interface IStorage {
     Resume load(String uuid);
     void delete(String uuid);
     Collection<Resume> getAllSorted();
-    int size=0;
+    int size();
 }
