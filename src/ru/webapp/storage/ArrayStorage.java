@@ -42,6 +42,11 @@ public class ArrayStorage extends AbstractStorage {
     }
 
     @Override
+    protected void doSave(Resume r) {
+
+    }
+
+    @Override
     public void update(Resume r) {
         LOGGER.info("Update resume with " + r.getUuid());
         int idx = getIndex(r.getUuid());
