@@ -18,7 +18,7 @@ import static org.junit.Assert.assertArrayEquals;
 /**
  * Created by Айслу on 12.09.2016.
  */
-public class ArrayStorageTest {
+public class ArrayStorageTest extends AbstractStorageTest {
     private Resume R1, R2, R3;
     private ArrayStorage storage = new ArrayStorage();
 
