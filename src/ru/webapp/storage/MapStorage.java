@@ -2,44 +2,51 @@ package ru.webapp.storage;
 
 import ru.webapp.model.Resume;
 
-import java.util.Collection;
+import java.util.*;
 
 /**
  * Created by Айслу on 16.09.2016.
  */
 public class MapStorage extends AbstractStorage {
-    @Override
-    public void Clear() {
+   private Map<String, Resume> map = new HashMap<>();
 
+    @Override
+    protected void doClear() {
+        map.clear();
     }
 
     @Override
-    public void update(Resume r) {
-
+    protected boolean exist(String uuid) {
+        return map.get(uuid) != null;
     }
 
     @Override
-    public Resume load(String uuid) {
-        return null;
+    protected void doUpdate(Resume r) {
+        map.put(r.getUuid(), r);
     }
 
     @Override
-    public void delete(String uuid) {
-
+    protected Resume doLoad(String uuid) {
+        return map.get(uuid);
     }
 
     @Override
-    public Collection<Resume> getAllSorted() {
-        return null;
+    protected void doDelete(String uuid) {
+        map.remove(uuid);
+    }
+
+    @Override
+    protected List<Resume> doGetAll() {
+        return new ArrayList<>(map.values());
     }
 
     @Override
     public int size() {
-        return 0;
+        return map.size();
     }
 
     @Override
     protected void doSave(Resume r) {
-
+        map.put(r.getUuid(), r);
     }
 }
