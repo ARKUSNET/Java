@@ -10,6 +10,8 @@ import ru.webapp.model.ContactType;
 import ru.webapp.model.Resume;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
@@ -69,11 +71,10 @@ public abstract class AbstractStorageTest {
         assertEquals(R3, storage.load(R3.getUuid()));
     }
 
-    @Test(expected = WebAppException.class)
+    @Test
     public void delete() throws Exception {
         storage.delete(R1.getUuid());
         Assert.assertEquals(2, storage.size());
-        storage.load(R1.getUuid());
     }
 
     @Test(expected = WebAppException.class)
@@ -81,11 +82,30 @@ public abstract class AbstractStorageTest {
         storage.load("dummy");
     }
 
+    @Test(expected = WebAppException.class)
+    public void deleteMissed() throws Exception{
+        storage.delete("dummy");
+    }
+
+    @Test(expected = WebAppException.class)
+    public void savePresented() throws Exception{
+        storage.save(R1);
+    }
+
+    @Test(expected = WebAppException.class)
+    public void updateMissed() throws Exception{
+        Resume resume = new Resume("dummy", "fullName_U1", "location_U1");
+        storage.update(resume);
+    }
+
     @Test
     public void getAllSorted() throws Exception {
-        Resume[] src = new Resume[]{R1, R2, R3};
-        Arrays.sort(src);
-        assertArrayEquals(src, storage.getAllSorted().toArray());
+//        Resume[] src = new Resume[]{R1, R2, R3};
+//        Arrays.sort(src);
+//        assertArrayEquals(src, storage.getAllSorted().toArray());
+        List<Resume> list = Arrays.asList(R1,R2,R3);
+        Collections.sort(list);
+        assertEquals(list, storage.getAllSorted());
     }
 
     @Test

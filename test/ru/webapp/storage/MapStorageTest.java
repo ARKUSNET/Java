@@ -3,44 +3,14 @@ package ru.webapp.storage;
 import ru.webapp.model.Resume;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Айслу on 16.09.2016.
  */
-public class MapStorageTest extends AbstractStorage {
+public class MapStorageTest extends AbstractStorageTest {
 
-    @Override
-    public void Clear() {
-
-    }
-
-    @Override
-    public void update(Resume r) {
-
-    }
-
-    @Override
-    public Resume load(String uuid) {
-        return null;
-    }
-
-    @Override
-    public void delete(String uuid) {
-
-    }
-
-    @Override
-    public Collection<Resume> getAllSorted() {
-        return null;
-    }
-
-    @Override
-    public int size() {
-        return 0;
-    }
-
-    @Override
-    protected void doSave(Resume r) {
-
+    {
+//        storage = new MapStorageTest();
     }
 }
