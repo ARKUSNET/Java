@@ -1,6 +1,5 @@
 package lesson03;
 
-import ru.webapp.model.Contact;
 import ru.webapp.model.ContactType;
 import ru.webapp.model.Link;
 

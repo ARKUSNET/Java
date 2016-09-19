@@ -5,12 +5,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import ru.webapp.WebAppException;
-import ru.webapp.model.Contact;
 import ru.webapp.model.ContactType;
 import ru.webapp.model.Resume;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
@@ -35,11 +35,11 @@ public abstract class AbstractStorageTest {
     @Before
     public void before(){
         R1 = new Resume("Полное Имя1", "location1");
-        R1.addContact(new Contact(ContactType.MAIL, "mail@ya.ru"));
-        R1.addContact(new Contact(ContactType.PHONE, "11111"));
+        R1.addContact(ContactType.MAIL, "mail@ya.ru");
+        R1.addContact(ContactType.PHONE, "11111");
         R2 = new Resume("Полное Имя2", null);
-        R2.addContact(new Contact(ContactType.SKYPE, "skype2"));
-        R2.addContact(new Contact(ContactType.PHONE, "2222"));
+        R2.addContact(ContactType.SKYPE, "skype2");
+        R2.addContact(ContactType.PHONE, "2222");
         R3 = new Resume("Полное Имя3", null);
         storage.Clear();
         storage.save(R3);
@@ -112,6 +112,4 @@ public abstract class AbstractStorageTest {
     public void size() throws Exception {
         Assert.assertEquals(3, storage.size());
     }
-
-
 }
