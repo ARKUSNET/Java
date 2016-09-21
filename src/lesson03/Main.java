@@ -10,7 +10,7 @@ import java.lang.reflect.Field;
  */
 public class Main {
     public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException {
-        Contact c = new Contact(ContactType.HOME_PHONE, "123456");
+        //Contact c = new Contact(ContactType.HOME_PHONE, "123456");
         ContactType c2 = ContactType.ICQ;
         System.out.println(ContactType.ICQ == c2);
         String property = "url";
